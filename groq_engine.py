@@ -1,9 +1,12 @@
 import streamlit as st
 from groq import Groq
+import os
+from dotenv import load_dotenv
 
 # 1. Initialize Groq instead of GenAI
 # Securely replace this with your actual Groq API Key
-client = Groq(api_key="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")
+load_dotenv()
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def analyze_resume_with_groq(resume_text, target_role):
     prompt = f"""
